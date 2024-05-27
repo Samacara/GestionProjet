@@ -12,9 +12,9 @@ import java.util.List;
 @Service
 public interface ProjetService
 {
-    public List<ProjetDto>getallprojet();
+    public List<ProjetDto>  getallprojet();
 
-    public List<Ouvrier> getOuvriersParProjet(Integer idProjet);
+   // public List<Ouvrier> getOuvriersParProjet(Integer idProjet);
 
     public ProjetDto saveProjet(ProjetDto projet);
 

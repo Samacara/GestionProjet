@@ -66,11 +66,11 @@ public class ProjetController implements ProjetApi {
 //            return ResponseEntity.badRequest().body(e.getMessage());
 //        }
     }
-
-    @Override
-    public ResponseEntity<Object> getOuvriersParProjet(Integer idProjet) {
-        return ok().body(projetService.getOuvriersParProjet(idProjet));
-    }
+////
+//    @Override
+//    public ResponseEntity<Object> getOuvriersParProjet(Integer idProjet) {
+//        return ok().body(projetService.getOuvriersParProjet(idProjet));
+//    }
 
 
 //    @Override

@@ -2,9 +2,7 @@ package com.apprentice.gestionProjet.Service;
 import com.apprentice.gestionProjet.DTO.DepenseDto;
 import com.apprentice.gestionProjet.DTO.ProjetDto;
 import com.apprentice.gestionProjet.Entity.Depense;
-import com.apprentice.gestionProjet.Entity.Projet;
 import com.apprentice.gestionProjet.Repository.DepenseRepository;
-import com.apprentice.gestionProjet.Repository.ProjetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
@@ -46,7 +44,7 @@ public class DepenseServiceImpl implements DepenseService{
 
 
     @Override
-    public DepenseDto saveDepense(DepenseDto depenseDto) {
+    public DepenseDto saveDepense(Integer projetId, DepenseDto depenseDto) {
 //        Depense depense = DepenseDto.toEntitity(depenseDto);
         ProjetDto projet = projetService.getById(depenseDto.getProjet().getId());
         Integer nouveauBudget = projet.getBudget() - depenseDto.getMontant();
@@ -72,7 +70,7 @@ public class DepenseServiceImpl implements DepenseService{
             found.setId(depenseDto.getId());
             found.setMontant(depenseDto.getMontant());
             found.setMotif(depenseDto.getMotif());
-
+            found.setProjet(DepenseDto.toEntitity(depenseDto).getProjet());
             Depense depense = depenseRepository.save(DepenseDto.toEntitity(depenseDto));
             return DepenseDto.fromEntity(depense);
 

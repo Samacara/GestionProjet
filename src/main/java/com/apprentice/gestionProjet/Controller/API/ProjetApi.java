@@ -40,7 +40,7 @@ public interface ProjetApi {
     @PutMapping("/api/v1/projets/{idProjet}/soustraction")
     public ResponseEntity<Object> soustractionBudget( @PathVariable(value ="idProjet" ) Integer idProjet, @RequestParam(value = "montant") Integer montant);
 
-    @GetMapping("/api/v1/projets/{idProjet}/ouvrier")
-    public ResponseEntity<Object> getOuvriersParProjet(@PathVariable (value ="idProjet" ) Integer idProjet);
+//    @GetMapping("/api/v1/projets/{idProjet}/ouvrier")
+//    public ResponseEntity<Object> getOuvriersParProjet(@PathVariable (value ="idProjet" ) Integer idProjet);
 
 }

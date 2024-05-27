@@ -18,14 +18,14 @@ import java.util.List;
 
 public class ProjetServiceImpl implements ProjetService {
 
-    private final OuvrierService ouvrierService;
     private ProjetRepository projetRepository;
 
-    @Autowired
-    public ProjetServiceImpl(ProjetRepository projetRepository, @Qualifier("ouvrierService") OuvrierService ouvrierService) {
+    public ProjetServiceImpl(ProjetRepository projetRepository) {
         this.projetRepository = projetRepository;
-        this.ouvrierService = ouvrierService;
     }
+
+    @Autowired
+
 
     @Override
     public List<ProjetDto> getallprojet() {
@@ -37,12 +37,12 @@ public class ProjetServiceImpl implements ProjetService {
         return list;
     }
 
-    @Override
-    public List<Ouvrier> getOuvriersParProjet(Integer idProjet) {
-        Projet projet = projetRepository.findById(idProjet)
-                .orElseThrow(() -> new IllegalArgumentException("Projet non trouvé"));
-        return projet.getOuvriers();
-    }
+//    @Override
+//    public List<Ouvrier> getOuvriersParProjet(Integer idProjet) {
+//        Projet projet = projetRepository.findById(idProjet)
+//                .orElseThrow(() -> new IllegalArgumentException("Projet non trouvé"));
+//        return projet.getOuvriers();
+//    }
 
 
 
@@ -112,7 +112,7 @@ public class ProjetServiceImpl implements ProjetService {
             Projet prg= projetRepository.save(projet);
             return ProjetDto.fromEntity(prg);
         } else {
-            throw new IllegalArgumentException("La somme à soustraire passe le budget disponible.");
+            throw new IllegalArgumentException("La somme à soustraire dépasse le budget disponible.");
         }
 
     }

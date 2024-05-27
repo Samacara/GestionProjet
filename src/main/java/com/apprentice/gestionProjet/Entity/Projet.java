@@ -31,13 +31,19 @@ public class Projet {
    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     List<Depense> depenses;
 
+    @OneToMany(mappedBy = "projet")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    List<ProjetOuvrier> projetOuvriers;
+
+    @OneToMany(mappedBy = "projet")
+    List<Sortie> sorties;
 //    @OneToMany(mappedBy = "projet")
 //   @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 //    List<Ouvrier> ouvriers;
-@ManyToMany
-@JoinTable(
-        name = "projet_ouvrier",
-        joinColumns = @JoinColumn(name = "id"),
-        inverseJoinColumns = @JoinColumn(name = "id"))
-        List<Ouvrier> ouvriers;
+//    @ManyToMany
+//    @JoinTable(
+//        name = "projet_ouvrier",
+//        joinColumns = @JoinColumn(name = "idOuvrier"),
+//        inverseJoinColumns = @JoinColumn(name = "idDepense"))
+//    private List<Ouvrier> ouvriers;
 }

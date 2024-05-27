@@ -12,7 +12,7 @@ public interface DepenseService {
 
     public List<DepenseDto> getallDepense();
 
-    public DepenseDto saveDepense(DepenseDto depense);
+    public DepenseDto saveDepense(Integer projetId, DepenseDto depense);
 
     public DepenseDto updateDepenseById(DepenseDto depenseDto, Integer id);
 

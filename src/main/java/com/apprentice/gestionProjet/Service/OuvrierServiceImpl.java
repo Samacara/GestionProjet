@@ -48,7 +48,6 @@ public class OuvrierServiceImpl implements OuvrierService{
             found.setNom(ouvrierDto.getNom());
             found.setAdresse(ouvrierDto.getAdresse());
             found.setLocalisation(ouvrierDto.getLocalisation());
-            found.setSalaire(ouvrierDto.getSalaire());
 
             Ouvrier ouvrier = ouvrierRepository.save(OuvrierDto.toEntity(ouvrierDto));
             return  OuvrierDto.fromEntity(ouvrier);
@@ -66,6 +65,11 @@ public class OuvrierServiceImpl implements OuvrierService{
     @Override
     public void deleteOuvrierById(Integer IdOuvrier) {
         ouvrierRepository.deleteById(IdOuvrier);
+    }
+
+    @Override
+    public OuvrierDto ajouterOuvrierAProjet(Integer IdOuvrier, Integer idProjet, Integer salaire) {
+        return null;
     }
 
 

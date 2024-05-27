@@ -21,8 +21,8 @@ public class DepenseController implements DepenseApi {
     }
 
     @Override
-    public ResponseEntity<Object> CreateDepense(DepenseDto depense) {
-        return ok().body(depenseService.saveDepense(depense));
+    public ResponseEntity<Object> CreateDepense(DepenseDto depense, Integer projetId) {
+        return ok().body(depenseService.saveDepense(projetId, depense));
     }
 
     @Override

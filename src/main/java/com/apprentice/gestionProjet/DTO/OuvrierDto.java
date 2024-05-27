@@ -23,7 +23,6 @@ public class OuvrierDto {
                 .nom(ouvrier.getNom())
                 .adresse(ouvrier.getAdresse())
                 .localisation(ouvrier.getLocalisation())
-                .salaire(ouvrier.getSalaire())
                 .build();
     }
 
@@ -33,7 +32,6 @@ public class OuvrierDto {
                 .nom(ouvrierDto.getNom())
                 .adresse(ouvrierDto.getAdresse())
                 .localisation(ouvrierDto.getLocalisation())
-                .salaire(ouvrierDto.getSalaire())
                 .build();
     }
 }

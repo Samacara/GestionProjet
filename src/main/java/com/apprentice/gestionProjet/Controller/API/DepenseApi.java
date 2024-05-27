@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.*;
 
 public interface DepenseApi {
     //enregistre une depense
-    @PostMapping("/api/v1/depenses/creer")
-    public ResponseEntity<Object> CreateDepense(@RequestBody DepenseDto depense);
+    @PostMapping("/api/v1/depenses/projets/{projetId}")
+    public ResponseEntity<Object> CreateDepense(@RequestBody DepenseDto depense, @PathVariable(value = "projetId") Integer projetId);
 
     //modifier une depense
     @PutMapping("/api/v1/depenses/{idDepense}")

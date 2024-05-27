@@ -13,7 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @ToString
 @Entity
-@Table(name = "ouvrierprojet")
+@Table(name = "ouvrier")
 
 public class Ouvrier {
     @Id
@@ -26,10 +26,36 @@ public class Ouvrier {
 
     private String localisation;
 
-    private Integer salaire;
 
+//
+//    @ManyToOne
+//    @JoinColumn(name = "idProjetOuvrier")
+//    private ProjetOuvrier projetOuvrier;
 
     @OneToMany(mappedBy = "ouvrier")
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    List<Projet> projets;
+    List<ProjetOuvrier> projetOuvriers;
+
+
+
+
+
+
+
+
+
+
+
+
+
+//    @ManyToMany
+//    @JoinTable(
+//            name = "projet_ouvrier",
+//            joinColumns = @JoinColumn(name = "idDepense"),
+//            inverseJoinColumns = @JoinColumn(name = "idOuvrier"))
+//    private List<Ouvrier> ouvriers;
+
+//    @OneToMany(mappedBy = "ouvrier")
+//    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    //private List<Projet> projets;
 }
