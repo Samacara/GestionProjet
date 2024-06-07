@@ -45,13 +45,13 @@ public class DepenseServiceImpl implements DepenseService{
 
     @Override
     public DepenseDto saveDepense(Integer projetId, DepenseDto depenseDto) {
-//        Depense depense = DepenseDto.toEntitity(depenseDto);
+//        Depense depense = DepenseDto.toEntity(depenseDto);
         ProjetDto projet = projetService.getById(depenseDto.getProjet().getId());
         Integer nouveauBudget = projet.getBudget() - depenseDto.getMontant();
         if (nouveauBudget >= 0) {
             projetService.soustractionBudget(projet.getId(), depenseDto.getMontant());
             depenseDto.setProjet(projet);
-            Depense savedDepense = depenseRepository.save(DepenseDto.toEntitity(depenseDto));
+            Depense savedDepense = depenseRepository.save(DepenseDto.toEntity(depenseDto));
             return DepenseDto.fromEntity(savedDepense);
         } else {
             throw new IllegalArgumentException("La dépense excède le budget disponible pour ce projet.");
@@ -70,8 +70,8 @@ public class DepenseServiceImpl implements DepenseService{
             found.setId(depenseDto.getId());
             found.setMontant(depenseDto.getMontant());
             found.setMotif(depenseDto.getMotif());
-            found.setProjet(DepenseDto.toEntitity(depenseDto).getProjet());
-            Depense depense = depenseRepository.save(DepenseDto.toEntitity(depenseDto));
+            found.setProjet(DepenseDto.toEntity(depenseDto).getProjet());
+            Depense depense = depenseRepository.save(DepenseDto.toEntity(depenseDto));
             return DepenseDto.fromEntity(depense);
 
         }

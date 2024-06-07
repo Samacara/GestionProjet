@@ -1,6 +1,7 @@
 package com.apprentice.gestionProjet.Service;
 
 import com.apprentice.gestionProjet.DTO.PretDto;
+import com.apprentice.gestionProjet.Entity.Pret;
 
 
 import java.util.List;
@@ -18,5 +19,7 @@ public interface PretService {
     public  void  deletePret(Integer idPret);
 
     public PretDto ajouterReglement(Integer idPret, Integer SommeRegler);
+
+    public List<PretDto> getAllPretByPeriod(String dateDebut, String dateFin);
 
 }

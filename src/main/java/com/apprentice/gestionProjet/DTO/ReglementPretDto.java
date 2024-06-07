@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -14,11 +16,15 @@ public class ReglementPretDto {
 
     private Integer id;
     private  Integer montantReglement;
+    private LocalDate dateModification;
+    private LocalDate dateCreation;
     private PretDto pret;
 
     public static  ReglementPretDto fromEntity(ReglementPret reglementPret){
         return ReglementPretDto.builder()
                 .id(reglementPret.getId())
+                .dateCreation(reglementPret.getDateCreation())
+                .dateModification(reglementPret.getDateModification())
                 .montantReglement(reglementPret.getMontantReglement())
                 .pret(PretDto.fromEntity(reglementPret.getPret()))
                 .build();

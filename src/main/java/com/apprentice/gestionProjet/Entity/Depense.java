@@ -1,20 +1,19 @@
 package com.apprentice.gestionProjet.Entity;
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 @Getter
 @Setter
-@Builder
+@SuperBuilder
 @RequiredArgsConstructor
 @AllArgsConstructor
 @ToString
 @Entity
 @Table(name = "depense")
 
-public class Depense {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+public class Depense extends BaseEntity{
+
 
     private Integer montant;
 

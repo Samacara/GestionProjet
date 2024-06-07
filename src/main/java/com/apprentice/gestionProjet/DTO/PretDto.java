@@ -4,7 +4,7 @@ import com.apprentice.gestionProjet.Entity.Pret;
 import lombok.Builder;
 import lombok.Data;
 
-import java.util.Date;
+import java.time.LocalDate;
 @Data
 @Builder
 public class PretDto {
@@ -13,16 +13,20 @@ public class PretDto {
     private String motif;
     private Integer montant;
     private Integer rembousser;
-    private Date date;
+    private String date;
+    private LocalDate dateModification;
+    private LocalDate dateCreation;
 
     public static  PretDto fromEntity(Pret pret){
         return PretDto.builder()
                 .id(pret.getId())
+                .dateCreation(pret.getDateCreation())
+                .dateModification(pret.getDateModification())
                 .nomBanque(pret.getNomBanque())
                 .motif(pret.getMotif())
                 .montant(pret.getMontant())
                 .rembousser(pret.getRembousser())
-                .date(pret.getDate())
+                .date(String.valueOf(pret.getDate()))
                 .build();
     }
 
@@ -33,7 +37,7 @@ public class PretDto {
                 .motif(pretDto.getMotif())
                 .montant(pretDto.getMontant())
                 .rembousser(pretDto.getRembousser())
-                .date(pretDto.getDate())
+                .date(LocalDate.parse(pretDto.getDate()))
                 .build();
     }
 }

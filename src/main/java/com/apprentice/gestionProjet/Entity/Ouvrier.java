@@ -3,22 +3,21 @@ package com.apprentice.gestionProjet.Entity;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 import java.util.List;
 
 @Getter
 @Setter
-@Builder
+@SuperBuilder
 @RequiredArgsConstructor
 @AllArgsConstructor
 @ToString
 @Entity
 @Table(name = "ouvrier")
 
-public class Ouvrier {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+public class Ouvrier extends BaseEntity {
+
 
     private String nom;
 

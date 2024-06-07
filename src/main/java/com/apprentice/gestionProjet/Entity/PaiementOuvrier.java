@@ -3,19 +3,19 @@ package com.apprentice.gestionProjet.Entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
+
 @Data
 
-@Builder
+@SuperBuilder
 @RequiredArgsConstructor
 @AllArgsConstructor
 @ToString
 @Entity
 @Table(name = "paiementOuvrier")
 
-public class PaiementOuvrier {
-    @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
-    private Integer id;
+public class PaiementOuvrier extends BaseEntity{
+
 
     private Integer regelerOperation;
 

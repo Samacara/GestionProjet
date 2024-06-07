@@ -2,19 +2,18 @@ package com.apprentice.gestionProjet.Entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 @Getter
 @Setter
-@Builder
+@SuperBuilder
 @RequiredArgsConstructor
 @AllArgsConstructor
 @ToString
 @Entity
 @Table(name = "reglementPret")
-public class ReglementPret {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private  Integer id;
+public class ReglementPret extends BaseEntity{
+
     private  Integer montantReglement;
 
     @ManyToOne

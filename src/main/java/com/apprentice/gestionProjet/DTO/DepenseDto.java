@@ -7,6 +7,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -18,19 +20,28 @@ public class DepenseDto{
 
     private Integer montant;
 
+    private LocalDate dateModification;
+
+    private LocalDate dateCreation;
+
     private ProjetDto projet;
+
 
     public static DepenseDto fromEntity(Depense depense){
         return DepenseDto.builder()
                 .id(depense.getId())
+                .dateCreation(depense.getDateCreation())
+                .dateModification(depense.getDateModification())
                 .montant(depense.getMontant())
                 .motif(depense.getMotif())
                 .projet(ProjetDto.fromEntity(depense.getProjet()))
                 .build();
     }
-    public static Depense toEntitity(DepenseDto depenseDto){
+    public static Depense toEntity(DepenseDto depenseDto){
         return Depense.builder()
                 .id(depenseDto.getId())
+//                .dateCreation(depenseDto.getDateCreation())
+//                .dateModification(depenseDto.getDateModification())
                 .montant(depenseDto.getMontant())
                 .motif(depenseDto.getMotif())
                 .projet(ProjetDto.toEntity(depenseDto.getProjet()))

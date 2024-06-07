@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -15,11 +17,15 @@ public class OuvrierDto {
     private String nom;
     private String adresse;
     private String localisation;
-    private Integer salaire;
+    private LocalDate dateModification;
+    private LocalDate dateCreation;
+
 
     public static OuvrierDto fromEntity(Ouvrier ouvrier){
         return OuvrierDto.builder()
                 .id(ouvrier.getId())
+                .dateCreation(ouvrier.getDateCreation())
+                .dateModification(ouvrier.getDateModification())
                 .nom(ouvrier.getNom())
                 .adresse(ouvrier.getAdresse())
                 .localisation(ouvrier.getLocalisation())

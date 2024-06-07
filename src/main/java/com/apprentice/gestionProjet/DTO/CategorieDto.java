@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -14,10 +16,15 @@ public class CategorieDto {
 
     private  Integer id;
     private String description;
+    private LocalDate dateModification;
+
+    private LocalDate dateCreation;
 
     public static CategorieDto fromEntity(Categorie categorie){
         return CategorieDto.builder()
                 .id(categorie.getId())
+                .dateCreation(categorie.getDateCreation())
+                .dateModification(categorie.getDateModification())
                 .description(categorie.getDescription())
                 .build();
     }

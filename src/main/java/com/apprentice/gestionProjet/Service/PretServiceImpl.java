@@ -6,8 +6,12 @@ import com.apprentice.gestionProjet.Repository.PretRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class PretServiceImpl implements PretService {
 
@@ -43,7 +47,7 @@ public class PretServiceImpl implements PretService {
             foundPret.setMotif(pretDto.getMotif());
             foundPret.setMontant(pretDto.getMontant());
             foundPret.setRembousser(pretDto.getRembousser());
-            foundPret.setDate(pretDto.getDate());
+            foundPret.setDate(LocalDate.parse(pretDto.getDate()));
 
             Pret pr = pretRepository.save(PretDto.toEntity(pretDto));
             return PretDto.fromEntity(pr);
@@ -78,6 +82,15 @@ public class PretServiceImpl implements PretService {
         } else {
             throw new IllegalArgumentException("La totalité du montant des réglement est supérieur au montant du pret .");
         }
+
+    }
+
+    @Override
+    public List<PretDto> getAllPretByPeriod(String dateDebut, String dateFin) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        return pretRepository.getPretByDateBetween(LocalDate.parse(dateDebut, formatter),LocalDate.parse(dateFin,formatter)).stream()
+                .map(PretDto::fromEntity)
+                .collect(Collectors.toList());
 
     }
 }

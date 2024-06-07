@@ -7,6 +7,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -17,11 +19,15 @@ public class ProjetDto {
     private String  libelle;
     private  String description;
     private  Integer budget;
+    private LocalDate dateModification;
+    private LocalDate dateCreation;
 
 
     public static ProjetDto fromEntity(Projet projet){
         return ProjetDto.builder()
                 .id(projet.getId())
+                .dateCreation(projet.getDateCreation())
+                .dateModification(projet.getDateModification())
                 .libelle(projet.getLibelle())
                 .description(projet.getDescription())
                 .budget(projet.getBudget())
@@ -31,6 +37,7 @@ public class ProjetDto {
 
     public static Projet toEntity(ProjetDto projetDto){
         return Projet.builder()
+
                 .id(projetDto.getId())
                 .libelle(projetDto.getLibelle())
                 .description(projetDto.getDescription())

@@ -39,4 +39,6 @@ public class CategorieController implements CategorieApi {
     public void DeleteCategorie(Integer idCategorie) {
         categorieService.DeleteCategorie(idCategorie);
     }
+
+
 }

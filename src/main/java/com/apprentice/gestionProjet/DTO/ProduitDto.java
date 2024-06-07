@@ -7,6 +7,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -19,10 +21,14 @@ public class ProduitDto {
     private String designation;
     private Integer stock;
     private CategorieDto categorie;
+    private LocalDate dateModification;
+    private LocalDate dateCreation;
 
     public static ProduitDto fromEntity(Produit produit){
         return ProduitDto.builder()
                 .id(produit.getId())
+                .dateCreation(produit.getDateCreation())
+                .dateModification(produit.getDateModification())
                 .nomProduit(produit.getNomProduit())
                 .designation(produit.getDesignation())
                 .stock(produit.getStock())
@@ -32,7 +38,7 @@ public class ProduitDto {
 
     public static  Produit toEntity(ProduitDto produitDto){
         return Produit.builder()
-                .Id(produitDto.getId())
+                .id(produitDto.getId())
                 .nomProduit(produitDto.getNomProduit())
                 .designation(produitDto.getDesignation())
                 .stock((produitDto.getStock()))

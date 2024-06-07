@@ -4,6 +4,9 @@ import com.apprentice.gestionProjet.DTO.PretDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.util.List;
+
 public interface PretApi {
 
     @PostMapping("/api/v1/prets/creer")
@@ -20,4 +23,8 @@ public interface PretApi {
 
     @DeleteMapping("/api/v1/prets/{idPret}")
     public void deletePret(@PathVariable(value = "idPret") Integer idPret);
+
+    @GetMapping("/api/v1/pret")
+    public ResponseEntity<List<PretDto>> getPretsInPeriods(@RequestParam("dateDebut") String dateDebut,
+                                                          @RequestParam("dateFin") String dateFin);
 }

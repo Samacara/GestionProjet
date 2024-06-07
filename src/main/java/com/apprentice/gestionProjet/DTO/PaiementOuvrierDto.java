@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -17,11 +19,15 @@ public class PaiementOuvrierDto {
     private Integer reglerOperation;
 
     private ProjetOuvrierDto projetOuvrier;
+    private LocalDate dateModification;
+    private LocalDate dateCreation;
 
     public  static PaiementOuvrierDto fromEntity(PaiementOuvrier paiementOuvrier){
 
       return   PaiementOuvrierDto.builder()
               .id(paiementOuvrier.getId())
+              .dateCreation(paiementOuvrier.getDateCreation())
+              .dateModification(paiementOuvrier.getDateModification())
               .reglerOperation(paiementOuvrier.getRegelerOperation())
               .projetOuvrier(ProjetOuvrierDto.fromEntity(paiementOuvrier.getProjetOuvrier()))
               .build();
