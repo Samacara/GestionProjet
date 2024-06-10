@@ -68,6 +68,11 @@ public class ReglementPretServiceImpl implements ReglementPretService{
 
     @Override
     public void deleteReglementPret(Integer idReglementPret) {
+        ReglementPret reglementPret = reglementPretRepository.findById(idReglementPret)
+                        .orElseThrow(() -> new IllegalArgumentException("Reglement du prêt non trouvé"));
+        PretDto pret = pretService.getPretById(reglementPret.getPret().getId());
+        pret.setRembousser(pret.getRembousser() - reglementPret.getMontantReglement());
+        pretService.savePret(pret);
         reglementPretRepository.deleteById(idReglementPret);
 
     }

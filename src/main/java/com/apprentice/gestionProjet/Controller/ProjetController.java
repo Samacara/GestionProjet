@@ -29,10 +29,7 @@ public class ProjetController implements ProjetApi {
         return ok().body(projetService.updateProjetById(projetDto, idProjet));
     }
 
-//    @Override
-//    public ResponseEntity<Object> createProjet1(Projet projet) {
-//        return ok().body(projetService.saveProjet1(projet));
-//    }
+
 
 
     @Override
@@ -59,22 +56,5 @@ public class ProjetController implements ProjetApi {
     public ResponseEntity<Object> soustractionBudget(Integer idProjet, Integer montant) {
 
         return ok().body(projetService.soustractionBudget(idProjet, montant));
-//        try {
-//            projetService.soustractionBudget(idProjet, montant);
-//            return ResponseEntity.ok("Soustraction effectuée avec succès.");
-//        } catch (IllegalArgumentException e) {
-//            return ResponseEntity.badRequest().body(e.getMessage());
-//        }
     }
-////
-//    @Override
-//    public ResponseEntity<Object> getOuvriersParProjet(Integer idProjet) {
-//        return ok().body(projetService.getOuvriersParProjet(idProjet));
-//    }
-
-
-//    @Override
-//    public ResponseEntity<Object> soustraireDuBudget( Integer idProjet, Integer montant) {
-//        return ok().body(projetService.soustraireDuBudget(idProjet, montant));
-//    }
 }

@@ -23,5 +23,5 @@ public interface OuvrierService {
 
     public OuvrierDto ajouterOuvrierAProjet(Integer IdOuvrier, Integer idProjet, Integer salaire);
 
-    public Page<OuvrierDto> findPagination(Integer pagesize, Integer pageno, String sortfield, String sortdirection);
+
 }

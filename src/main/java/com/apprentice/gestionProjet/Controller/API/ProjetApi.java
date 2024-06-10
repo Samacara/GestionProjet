@@ -17,9 +17,6 @@ public interface ProjetApi {
     @PutMapping("/api/v1/projets/{idProjet}")
     public ResponseEntity<Object> UpdateProjet(@RequestBody ProjetDto projetDto, @PathVariable(value = "idProjet") Integer  idProjet);
 
-    //enregistre un projet
-//    @PostMapping("/api/v2/projets/creer")
-//    public ResponseEntity<Object> createProjet1(@RequestBody Projet projet);
 
     //recupere un seul projet
     @GetMapping("/api/v1/projets/{idProjet}")
@@ -40,7 +37,5 @@ public interface ProjetApi {
     @PutMapping("/api/v1/projets/{idProjet}/soustraction")
     public ResponseEntity<Object> soustractionBudget( @PathVariable(value ="idProjet" ) Integer idProjet, @RequestParam(value = "montant") Integer montant);
 
-//    @GetMapping("/api/v1/projets/{idProjet}/ouvrier")
-//    public ResponseEntity<Object> getOuvriersParProjet(@PathVariable (value ="idProjet" ) Integer idProjet);
 
 }

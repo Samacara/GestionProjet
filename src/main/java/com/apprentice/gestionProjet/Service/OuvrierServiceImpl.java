@@ -73,10 +73,7 @@ public class OuvrierServiceImpl implements OuvrierService{
     }
 
 
-    @Override
-    public Page<OuvrierDto> findPagination(Integer pagesize, Integer pageno, String sortfield, String sortdirection) {
-        return null;
-    }
+
 
 
 }

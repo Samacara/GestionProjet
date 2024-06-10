@@ -11,7 +11,7 @@ import java.util.List;
 @Service
 public class CategorieServiceImpl implements CategorieService {
 
-    private CategorieRepository categorieRepository;
+    private CategorieRepository categorieRepository ;
     @Autowired
     public CategorieServiceImpl(CategorieRepository categorieRepository) {
         this.categorieRepository = categorieRepository;

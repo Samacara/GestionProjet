@@ -106,4 +106,14 @@ public class ProjetOuvrierServiceImpl implements ProjetOuvrierService {
      }
 
     }
-  }
+
+    @Override
+    public ProjetOuvrierDto soustraireRegler(Integer idProjetOuvrier, Integer sommeASoustraire) {
+        ProjetOuvrier projetOuvrier = projetOuvrierRipository.findById(idProjetOuvrier)
+                .orElseThrow(() -> new IllegalArgumentException("Projet ouvrier non trouvé"));
+
+        projetOuvrier.setRegler(projetOuvrier.getRegler() - sommeASoustraire);
+        projetOuvrierRipository.save(projetOuvrier);
+        return ProjetOuvrierDto.fromEntity(projetOuvrier);
+    }
+}

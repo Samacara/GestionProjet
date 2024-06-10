@@ -29,16 +29,5 @@ public interface ProjetOuvrierApi {
 
     @GetMapping("api/v2/projetsOuvriers")
     public ResponseEntity<Object> getOuvriersByProjet(@PathVariable (value = "idProjet")Integer idProjet);
-//
-//    @PostMapping("/api/v1/projetsOuvriers/differe/{idProjetOuvrier}")
-//    public ResponseEntity<Object> effectuerPaiementDiffere(@PathVariable (value = "idProjetOuvrier") Integer idProjetOuvrier, @RequestParam Integer montant);
-
-
-
-//    @GetMapping("/api/v1/projetsOuvrier/{idProjetOuvrier}/budget")
-//    public ResponseEntity<Object> getBudget(@PathVariable(value ="idProjetOuvrier" ) Integer idProjetOuvrier);
-//
-//    @PutMapping("/api/v1/projetsOuvrier/{idProjetOuvrier}/soustraction")
-//    public ResponseEntity<Object> soustractionBudget( @PathVariable(value ="idProjetOuvrier" ) Integer idProjet, @RequestParam(value = "montant") Integer montant);
 
 }

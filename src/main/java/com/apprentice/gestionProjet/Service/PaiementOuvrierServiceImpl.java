@@ -1,10 +1,8 @@
 package com.apprentice.gestionProjet.Service;
 
 import com.apprentice.gestionProjet.DTO.PaiementOuvrierDto;
-import com.apprentice.gestionProjet.DTO.ProjetDto;
 import com.apprentice.gestionProjet.DTO.ProjetOuvrierDto;
 import com.apprentice.gestionProjet.Entity.PaiementOuvrier;
-import com.apprentice.gestionProjet.Entity.ProjetOuvrier;
 import com.apprentice.gestionProjet.Repository.PaiementOuvrierRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,7 +38,6 @@ public class PaiementOuvrierServiceImpl implements PaiementOuvrierService{
     public PaiementOuvrierDto savepaiementOuvrier(Integer idProjetOuvrier, PaiementOuvrierDto paiementOuvrier) {
         ProjetOuvrierDto foundProjetOuvrier = projetOuvrierService.getProjetOuvrierById(idProjetOuvrier);
         Integer SommeAregler = foundProjetOuvrier.getSalaire() - paiementOuvrier.getReglerOperation();
-        //int salaireRestant = foundProjetOuvrier.getSalaire() - SommeAregler;
         if (SommeAregler >= 0) {
             projetService.soustractionBudget(foundProjetOuvrier.getId(), paiementOuvrier.getReglerOperation());
             paiementOuvrier.setProjetOuvrier(foundProjetOuvrier);
@@ -54,25 +51,6 @@ public class PaiementOuvrierServiceImpl implements PaiementOuvrierService{
         }
 
     }
-
-
-
-
-//        ProjetOuvrierDto salaire1 = projetOuvrierService.getProjetOuvrierById(paiementOuvrier.getProjetOuvrier().getProjet().getId());
-//        Integer nouveauBudget = salaire1.getProjet().getBudget() -paiementOuvrier.getSalaire();
-//
-//        if (foundProjetOuvrier != null && nouveauBudget >= 0){
-//            projetService.soustractionBudget(salaire1.getProjet().getId(), paiementOuvrier.getSalaire());
-//            paiementOuvrier.setProjetOuvrier(salaire1);
-//
-//            paiementOuvrier.setProjetOuvrier(foundProjetOuvrier);
-//            PaiementOuvrier p = paiementOuvrierRepository.save(PaiementOuvrierDto.toEntity(paiementOuvrier));
-//
-//            return PaiementOuvrierDto.fromEntity(p);
-//        }
-//        else {
-//            throw new IllegalArgumentException("Le salaire excède le budget disponible pour ce projet.");
-//        }
 
 
     @Override
@@ -94,10 +72,14 @@ public class PaiementOuvrierServiceImpl implements PaiementOuvrierService{
         PaiementOuvrier p = paiementOuvrierRepository.findById(idPaiementOuvrier).get();
         return PaiementOuvrierDto.fromEntity(p);
     }
-
     @Override
-    public void deletpaiementouvrier(Integer idPaiementOuvrier) {
+    public void deletpaiementouvrier(Integer idPaiementOuvrier) {PaiementOuvrier paiementOuvrier = paiementOuvrierRepository.findById(idPaiementOuvrier)
+            .orElseThrow(() -> new IllegalArgumentException("Paiement ouvrier non trouvé"));
 
-        paiementOuvrierRepository.deleteById(idPaiementOuvrier);
+        projetService.restitutionBudget(paiementOuvrier.getProjetOuvrier().getProjet().getId(), paiementOuvrier.getRegelerOperation());
+        projetOuvrierService.soustraireRegler(paiementOuvrier.getProjetOuvrier().getId(), paiementOuvrier.getRegelerOperation());
+
+        paiementOuvrierRepository.delete(paiementOuvrier);
     }
+
 }

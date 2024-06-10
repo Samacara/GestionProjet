@@ -36,13 +36,5 @@ public class Projet extends BaseEntity{
 
     @OneToMany(mappedBy = "projet")
     List<Sortie> sorties;
-//    @OneToMany(mappedBy = "projet")
-//   @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-//    List<Ouvrier> ouvriers;
-//    @ManyToMany
-//    @JoinTable(
-//        name = "projet_ouvrier",
-//        joinColumns = @JoinColumn(name = "idOuvrier"),
-//        inverseJoinColumns = @JoinColumn(name = "idDepense"))
-//    private List<Ouvrier> ouvriers;
+
 }

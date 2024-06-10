@@ -26,10 +26,6 @@ public class Ouvrier extends BaseEntity {
     private String localisation;
 
 
-//
-//    @ManyToOne
-//    @JoinColumn(name = "idProjetOuvrier")
-//    private ProjetOuvrier projetOuvrier;
 
     @OneToMany(mappedBy = "ouvrier")
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)

@@ -26,14 +26,12 @@ public interface ProjetService
 
     public void deleteById(Integer idProjet);
 
-    public Page<ProjetDto> findPagination(Integer pagesize, Integer pageno, String sortfield, String sortdirection);
-
-//    public Integer  getBudgetProjet(Integer idProjet);
-//
-//    public Integer soustraireDuBudget(Integer idProjet,Integer montant);
-
 
     public Integer getBudget(Integer idProjet);
 
     public ProjetDto soustractionBudget(Integer idProjet,Integer sommeASoustraire);
+
+    public ProjetDto restitutionBudget(Integer idProjet, Integer sommeARestituer);
+
+
 }

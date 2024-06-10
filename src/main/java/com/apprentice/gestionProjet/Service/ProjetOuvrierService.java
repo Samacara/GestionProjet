@@ -24,4 +24,9 @@ public interface ProjetOuvrierService {
 
 
     public ProjetOuvrierDto ajouterRegler(Integer idProjetOuvrier, Integer SommeAajouter);
+
+   public ProjetOuvrierDto soustraireRegler(Integer idProjetOuvrier, Integer sommeASoustraire);
 }
+
+
+

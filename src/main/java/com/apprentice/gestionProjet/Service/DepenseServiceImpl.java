@@ -36,16 +36,12 @@ public class DepenseServiceImpl implements DepenseService{
         return list;
     }
 
-//    @Override
-//    public DepenseDto saveDepense(DepenseDto depense) {
-//        Depense d= depenseRepository.save(DepenseDto.toEntitity(depense));
-//        return DepenseDto.fromEntity(d);
-//    }
+
 
 
     @Override
     public DepenseDto saveDepense(Integer projetId, DepenseDto depenseDto) {
-//        Depense depense = DepenseDto.toEntity(depenseDto);
+
         ProjetDto projet = projetService.getById(depenseDto.getProjet().getId());
         Integer nouveauBudget = projet.getBudget() - depenseDto.getMontant();
         if (nouveauBudget >= 0) {
@@ -84,21 +80,20 @@ public class DepenseServiceImpl implements DepenseService{
         return DepenseDto.fromEntity(d);
     }
 
-    @Override
-    public void deleteDepenseById(Integer IdDepense) {
-        depenseRepository.deleteById(IdDepense);
-    }
 
     @Override
-    public Page<DepenseDto> findPagination(Integer pagesize, Integer pageno, String sortfield, String sortdirection) {
-        return null;
+    public void deleteDepenseById(Integer idDepense) {
+        // Étape 1: Récupérer la dépense à supprimer
+        Depense depense = depenseRepository.findById(idDepense)
+                .orElseThrow(() -> new IllegalArgumentException("Dépense non trouvée"));
+
+        // Étape 2: Restituer le montant de la dépense au budget du projet
+        ProjetDto projet = projetService.getById(depense.getProjet().getId());
+        projet.setBudget(projet.getBudget() + depense.getMontant());
+        projetService.saveProjet(projet);
+
+        // Étape 3: Supprimer la dépense
+        depenseRepository.deleteById(idDepense);
     }
 
-//    @Override
-//    public DepenseDto creerDepense(DepenseDto depenseDto) {
-//        Projet projet = DepenseDto.toEntitity(depenseDto);
-//
-//
-//        return null;
-//    }
 }

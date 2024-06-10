@@ -16,18 +16,12 @@ package com.apprentice.gestionProjet.Controller;
 
 import com.apprentice.gestionProjet.Controller.API.OuvreirPdfApi;
 import com.apprentice.gestionProjet.Service.PdfService;
-import com.itextpdf.text.DocumentException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
 
 @Service
 @RestController

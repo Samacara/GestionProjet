@@ -18,10 +18,10 @@ public interface DepenseService {
 
     public DepenseDto getDepenseById(Integer IdDepense);
 
-    public void deleteDepenseById(Integer IdDepense);
 
-   public Page<DepenseDto> findPagination(Integer pagesize, Integer pageno, String sortfield, String sortdirection);
 
-//    public DepenseDto creerDepense(DepenseDto depenseDto);
-//
+    public void deleteDepenseById(Integer idDepense);
+
+
+
 }

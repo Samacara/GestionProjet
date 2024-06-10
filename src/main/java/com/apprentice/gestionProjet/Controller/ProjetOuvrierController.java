@@ -51,9 +51,5 @@ public class ProjetOuvrierController implements ProjetOuvrierApi {
         return null;
     }
 
-//    @Override
-//    public ResponseEntity<Object> effectuerPaiementDiffere(Integer idProjetOuvrier, Integer montant) {
-//        return ResponseEntity.ok().body(projetOuvrierService.effectuerPaiementDiffere(idProjetOuvrier, montant));
-//
-//    }
+
 }

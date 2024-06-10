@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -64,12 +63,7 @@ public class PretControler implements PretApi {
         return new ResponseEntity<>(prets, HttpStatus.OK);
     }
 
-//    @Override
-//    public ResponseEntity<List<PretDto>> getPretsInPeriod(LocalDate dateDebut, LocalDate dateFin) {
-//        List<PretDto> prets = pretService.getAllPretByPeriod(dateDebut, dateFin);
-//        return new ResponseEntity<>(prets, HttpStatus.OK);
 
-//        return ResponseEntity.ok().body(pretService.getAllPretByPeriod(dateDebut, dateFin));
     }
 
 

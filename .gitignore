@@ -32,3 +32,8 @@ build/
 ### VS Code ###
 .vscode/
 /.mvn/
+
+/src/main/java/com/apprentice/gestionProjet/Security/
+/src/main/java/com/apprentice/gestionProjet/Tuto/
+/Image/
+/font/

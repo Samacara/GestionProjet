@@ -40,8 +40,6 @@ public class DepenseDto{
     public static Depense toEntity(DepenseDto depenseDto){
         return Depense.builder()
                 .id(depenseDto.getId())
-//                .dateCreation(depenseDto.getDateCreation())
-//                .dateModification(depenseDto.getDateModification())
                 .montant(depenseDto.getMontant())
                 .motif(depenseDto.getMotif())
                 .projet(ProjetDto.toEntity(depenseDto.getProjet()))
